@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distance - Food Diet Assistance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style0.css') }}" />
+  <script defer src="{{ url_for('static', filename='loading.js') }}"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <div class="logo">
+        <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">🌙</button>
+      </div>
+      <div class="nav-links">
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="{{ url_for('about_page1') }}">Services</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="left-section">
+        <h1><span>WELCOME TO</span><br /><strong>DISTANCE !</strong></h1>
+        <p>Ayo mulai journey kamu untuk mendeteksi makanan dan kalorienya!</p>
+        <a class="order-btn" href="{{ url_for('login') }}">🥗 MULAI SEKARANG</a>
+      </div>
+      <div class="right-section">
+        <img src="{{ url_for('static', filename='bowl.jpeg') }}" alt="Bowl" class="bowl" />
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="social">
+        <a href="{{ url_for('about_page1') }}">📘</a>
+      </div>
+      <p>© 2025 Distance | Made with ❤️ by Group 3</p>
+    </footer>
+  </div>
+</body>
+</html>

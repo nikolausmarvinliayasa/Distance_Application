@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Riwayat Makanan</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <a href="{{ url_for('main_home') }}">
+        <button id="home-btn" title="Kembali ke Beranda">🏠</button>
+      </a>
+      <div class="header-text">
+        <h2>Riwayat Pendeteksian Makanan</h2>
+        <p>Sistem mengenali nama, kalori, dan rekomendasi makanan untuk diet Anda</p>
+      </div>
+      <button id="toggle-theme" title="Ganti Tema">🌙</button>
+    </div>
+
+    <div class="header">
+      <a href="{{ url_for('main_home') }}">
+        <button class="add-btn">+ Deteksi Makanan Lagi</button>
+      </a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nama Makanan</th>
+          <th>ID Makanan</th>
+          <th>Kalori</th>
+          <th>Status Diet</th>
+          <th>Gambar</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="food-table-body">
+        {% for item in records %}
+          <tr>
+            <td>{{ item.food_name }}</td>
+            <td>#FD{{ '%04d' % item.id }}</td>
+            <td>{{ item.calories }} kkal</td>
+            <td>{{ item.diet_status }}</td>
+            <td>
+              {% if item.image_path %}
+                <img src="{{ url_for('uploaded_file', filename=item.image_path) }}"
+                    alt="{{ item.food_name }}"
+                    style="width: 100px; border-radius: 8px;">
+              {% else %}
+                <span style="color: gray;">Tidak ada gambar</span>
+              {% endif %}
+            </td>
+            <td>
+              <form action="{{ url_for('delete_history', id=item.id) }}" method="post" style="display:inline;">
+                <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6" style="text-align:center;">Belum ada data riwayat.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script src="{{ url_for('static', filename='history.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+/*==============================
+  Root Colors (Light & Dark Mode)
+===============================*/
+:root {
+    --bg-color: #eaf6e2;
+    --text-color: #003300;
+    --button-bg: #4CAF50;
+    --button-text: #fff;
+}
+
+body.dark {
+    --bg-color: #1e1e1e;
+    --text-color: #eaf6e2;
+    --button-bg: #2e7d32;
+    --button-text: #fff;
+}
+
+/*==============================
+  Base Styles
+===============================*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*==============================
+  Header
+===============================*/
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #7cbf70;
+    color: white;
+}
+
+header .logo span {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 60px;
+    animation: bounce 1s infinite alternate;
+}
+
+header .brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.brand h1 {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.brand h1 span {
+    color: #333;
+}
+
+/*==============================
+  Bounce & Text Color Animations
+===============================*/
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+@keyframes colorChangeCalorie {
+    0% { color: #000; }
+    25% { color: #777; }
+    50% { color: #fff; }
+    75% { color: #777; }
+    100% { color: #000; }
+}
+
+@keyframes colorChangeInsight {
+    0% { color: #fff; }
+    25% { color: #ccc; }
+    50% { color: #000; }
+    75% { color: #ccc; }
+    100% { color: #fff; }
+}
+
+.calorie {
+    animation: colorChangeCalorie 8s infinite;
+}
+
+.insight {
+    animation: colorChangeInsight 8s infinite;
+}
+
+/*==============================
+  Navigation
+===============================*/
+.navbar {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hamburger {
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    display: block;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #7cbf70;
+    display: none;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+    min-width: 150px;
+}
+
+.nav-links li {
+    padding: 10px 20px;
+    text-align: right;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: block;
+}
+
+.nav-links li a:hover {
+    background-color: #6ba259;
+    border-radius: 5px;
+}
+
+/* Horizontal menu on large screen */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .nav-links li {
+        padding: 0 15px;
+    }
+
+    .nav-links li a {
+        color: white;
+    }
+
+    .nav-links li a:hover {
+        background-color: transparent;
+        color: #f0f0f0;
+    }
+}
+
+/*==============================
+  Main Layout
+===============================*/
+main {
+    padding: 20px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.intro, .analyze {
+    flex: 1;
+    margin-top: 120px;
+}
+
+.intro {
+    margin-left: 240px;
+    margin-right: 20px;
+}
+
+.analyze {
+    margin-right: 240px;
+    max-width: 500px;
+    margin-bottom: 105px;
+}
+
+.intro h2 {
+    font-family: 'Jacques Francois Shadow', cursive;
+    width: 600px;
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.intro p {
+    font-family: 'Itim', cursive;
+    font-size: 24px;
+    line-height: 1.2;
+    width: 550px;
+    color: var(--text-color);
+}
+
+.analyze h3 {
+    font-family: 'Kadwa', serif;
+    font-size: 2.15rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/*==============================
+  Upload Box
+===============================*/
+.upload-box {
+    width: 415px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #7cbf70;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.upload-box label {
+    text-align: center;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.upload-box:hover .upload-icon {
+    transform: scale(1.2) rotate(10deg);
+    color: #7cbf70;
+}
+
+/*==============================
+  Sample Images
+===============================*/
+.sample-images {
+    margin-top: 20px;
+}
+
+.sample-images p {
+    text-align: center;
+    font-weight: bold;
+    margin: 40px 0 10px;
+}
+
+.sample-images .samples {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sample-images .samples img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.sample-images .samples img:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    transform: scale(1.05);
+}
+
+/*==============================
+  Modal
+===============================*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.exit-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #7cbf70;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.exit-btn:hover {
+    background-color: #6ba259;
+}
+
+/*==============================
+  Food Image Result
+===============================*/
+.food-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/*==============================
+  Footer
+===============================*/
+footer {
+    text-align: center;
+    padding: 5px;
+    background-color: #7cbf70;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/*==============================
+  Button General
+===============================*/
+button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 50%;
+    padding: 8px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.back-login-btn {
+    background-color: #fff;
+    color: #7cbf70;
+    padding: 8px 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-login-btn:hover {
+    background-color: #6ba259;
+    color: #fff;
+}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+</head>
+<body>
+  <button id="toggle-theme">🌙</button>
+
+  <div class="container">
+    <div class="left-side">
+      <div class="logo">🥗 Food - Diet Assistance</div>
+      <img src="{{ url_for('static', filename='food.jpg') }}" alt="Food" class="salad-img" />
+    </div>
+    <div class="right-side">
+      <h1>CREATE YOUR ACCOUNT</h1>
+      <form id="signupForm" method="POST" action="{{ url_for('signup') }}">
+        <input type="text" name="name" id="name" placeholder="Full Name" required />
+        <input type="email" name="email" id="email" placeholder="Email" required />
+
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password" placeholder="Password" required />
+          <span id="togglePassword">👁️</span>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <div class="separator">sign up to start your journey</div>
+
+      <div class="info-text">
+        Join us and let AI help you track, manage, and improve your daily meals.
+      </div>
+
+      <div class="signup-link">
+        Already have an account? 
+        <a href="{{ url_for('login') }}">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='signup.js') }}" defer></script>
+</body>
+</html>
